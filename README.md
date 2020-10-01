@@ -98,13 +98,19 @@ These Beats allow us to collect the following information from each machine:
 **Metricbeat**: Metricbeat detects system metric changes. For example, you can use Metricbeat to monitor and analyze system CPU, memory and load.
 
 ### Using the Playbooks
-In order to use the playbooks, you will need to have an Ansible control node already configured. We use the **jump box** for this purpose.
+In order to use the playbooks, you will need to have an Ansible control node already configured. 
 
-To use the playbooks, we must perform the following steps:
+For a better understanding of Ansible, you can check out this link: 
+[How Ansible Works] (https://www.ansible.com/overview/how-ansible-works)
+
+For a better understanding of YAML syntax, you can check out this link: 
+[YAML Syntax] (https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
+
+To use the playbooks, you must perform the following steps:
 - Copy the playbooks to the Ansible Control Node
 - Run each playbook on the appropriate targets
 
-The easiest way to copy the playbooks is to use Git:
+Use Git to copy the playbooks:
 
 ```bash
 $ cd /etc/ansible
@@ -116,8 +122,7 @@ $ cp project-1/playbooks/* .
 $ cp project-1/files/* ./files
 ```
 
-
-Next, you must create a `hosts` file to specify which VMs to run each playbook on. Run the commands below:
+Once you have copied the files to your machine, you must create a `hosts` file to specify which VMs to run each playbook on. Run the commands below:
 
 ```bash
 $ cd /etc/ansible
@@ -131,7 +136,7 @@ $ cat > hosts <<EOF
 EOF
 ```
 
-After this, the commands below run the playbook:
+Next, run the follwoing commands:
 
  ```bash
  $ cd /etc/ansible
@@ -142,9 +147,16 @@ After this, the commands below run the playbook:
 
 To verify success, wait five minutes to give ELK time to start up.
 
-Then, run: `curl http://10.0.0.8:5601`. This is the address of Kibana. If the installation succeeded, this command should print HTML to the console.
+Then, run: `curl http://[ELK Private IP]:5601`. This is the address of Kibana. If the installation succeeded, this command should print HTML to the console.
 
 
 Check if you ELK server is running:
 
 `http://[your.VM.IP]:5601/app/kibana`
+
+
+If you do not see the ELK server landing page, open a terminal and SSH into the ELK server.
+
+  - Run `docker container list -a` to verify that the container is on.
+
+  - If it isn't, run `docker start elk`.
