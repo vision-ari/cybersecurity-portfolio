@@ -147,12 +147,12 @@ Next, run the follwoing commands:
 
 To verify success, wait five minutes to give ELK time to start up.
 
-Then, run: `curl http://[ELK Private IP]:5601`. This is the address of Kibana. If the installation succeeded, this command should print HTML to the console.
+Then, run: `curl http://[your.VM.IP]:5601`. This is the address of Kibana. If the installation succeeded, this command should print HTML to the console.
 
 
-Check if you ELK server is running:
+Verify that you can load the ELK stack server from your browser at 
 
-`http://[your.VM.IP]:5601/app/kibana`
+`http://[your.VM.IP]:5601/app/kibana`.
 
 
 If you do not see the ELK server landing page, open a terminal and SSH into the ELK server.
